@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         EditText editTextInput = (EditText) findViewById(R.id.editTextInput);
         EditText editTextOutput = (EditText) findViewById(R.id.editTextOutput);
 
-        String[] strings = editTextInput.getText().toString().split(" ");
+        String[] strings = editTextInput.getText().toString().split(" ");  //test
         int[] ints = new int[strings.length];
         for (int i=0; i < strings.length; i++) {
             ints[i] = Integer.parseInt(strings[i]);
