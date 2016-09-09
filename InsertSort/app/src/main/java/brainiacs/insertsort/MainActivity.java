@@ -23,20 +23,21 @@ public class MainActivity extends AppCompatActivity {
             ints[i] = Integer.parseInt(strings[i]);
         }
 
-        int[] sortedInts = insertionSort(ints);
+        String sortedInts = insertionSort(ints);
         String sorted = "";
-        for(int i:sortedInts){
-            sorted += i + " ";
-        }
+      //  for(int i:sortedInts){
+           // sorted += i + " ";
+       // }
 
-        editTextOutput.setText(sorted);
+        editTextOutput.setText(sortedInts);
     }
 
-    public static int[] insertionSort (int[] list) {      //this is the method
-        if (list!=null && list.length>0){
+    public static String insertionSort(int[] list) {
+        if (list != null && list.length > 0) {
             int i, j, key, temp;
-            for(int m:list){
-                System.out.print(m);
+            String sortStr = "";
+            for (int m : list) {
+                sortStr += m;
             }
             for (i = 1; i < list.length; i++) {
 
@@ -50,16 +51,17 @@ public class MainActivity extends AppCompatActivity {
                     list[j + 1] = temp;
                     j--;
                 }
-                System.out.println();
-                for(int r:list){
-                    System.out.print(r);
+                sortStr += "\n";
+
+                for (int r : list) {
+                    sortStr += r;
                 }
 
             }
-            return list;
-        }
-        else
-        {
+
+            return sortStr;
+
+        } else {
             System.out.println("wrong entry");
             return null;
         }
