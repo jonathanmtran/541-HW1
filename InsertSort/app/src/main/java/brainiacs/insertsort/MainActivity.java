@@ -4,21 +4,36 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    EditText editTextInput;
+    TextView editTextOutput;
+    TextView helpTextTop;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        editTextInput = (EditText) findViewById(R.id.editTextInput);
+        editTextOutput = (TextView) findViewById(R.id.editTextOutput);
+        helpTextTop = (TextView) findViewById(R.id.helpTextTop);
     }
 
     public void buttonOnClick(View view) {
-        EditText editTextInput = (EditText) findViewById(R.id.editTextInput);
-        EditText editTextOutput = (EditText) findViewById(R.id.editTextOutput);
+        String string = editTextInput.getText().toString();
+        if (string.length() < 1)
+        {
+            Toast.makeText(this, "Can't be empty", Toast.LENGTH_LONG).show();
+            return;
+        }
 
-        String[] strings = editTextInput.getText().toString().split(" ");  //test
+        //need to add fix for " " at beginning of input
+
+        String[] strings = string.split(" ");  //test
+
+
         int[] ints = new int[strings.length];
         for (int i = 0; i < strings.length; i++) {
             ints[i] = Integer.parseInt(strings[i]);
@@ -37,6 +52,22 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    public void restartButtonOnClick(View view) {
+        editTextInput.setText("");
+        editTextOutput.setText("");
+    }
+
+    public void helpButtonOnClick(View view) {
+        if(helpTextTop.getVisibility() == View.VISIBLE)
+        {
+            helpTextTop.setVisibility(View.GONE);
+        } else
+        {
+            helpTextTop.setVisibility(View.VISIBLE);
+        }
+    }
+
 
     public static String insertionSort(int[] list) {
         boolean checkNumbers = checkData(list);

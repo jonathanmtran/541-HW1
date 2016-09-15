@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -17,6 +17,16 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:ems="10"
+            android:id="@+id/helpTextTop"
+            android:layout_gravity="center_horizontal"
+            android:visibility="gone"
+            android:text="Please input digits between 0-9 with a space between each number.\nMaximum input size is 8.\nMinimum input size is 2"/>
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -26,20 +36,48 @@
             android:inputType="number"
             />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sort"
-            android:id="@+id/button"
-            android:layout_gravity="center_horizontal"
-            android:onClick="buttonOnClick" />
 
-        <EditText
+        <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:gravity="center">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sort"
+                android:id="@+id/button"
+                android:layout_gravity="center_horizontal"
+                android:onClick="buttonOnClick" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Restart"
+                android:id="@+id/restartButton"
+                android:layout_gravity="center_horizontal"
+                android:onClick="restartButtonOnClick" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Help"
+                android:id="@+id/helpButton"
+                android:layout_gravity="center_horizontal"
+                android:onClick="helpButtonOnClick" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:inputType="textMultiLine"
             android:ems="10"
             android:id="@+id/editTextOutput"
             android:layout_gravity="center_horizontal" />
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>
