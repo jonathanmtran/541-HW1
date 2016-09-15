@@ -16,9 +16,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void buttonOnClick(View view) {
         EditText editTextInput = (EditText) findViewById(R.id.editTextInput);
-        EditText editTextOutput = (EditText) findViewById(R.id.editTextOutput);
+        EditText editTextOutput = (EditText) findViewById(R.id.editTextOutput); //test
 
-        String[] strings = editTextInput.getText().toString().split(" ");  //test
+        String[] strings = editTextInput.getText().toString().split(" ");  //test gev
         int[] ints = new int[strings.length];
         for (int i = 0; i < strings.length; i++) {
             ints[i] = Integer.parseInt(strings[i]);
