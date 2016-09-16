@@ -45,15 +45,16 @@ public class MainActivity extends AppCompatActivity {
         while(m.find()) {
             int num = Integer.parseInt(m.group());
 
+            // Determine if the number is a number from 0 to 9, inclusive
             if(num >= 0 && num <= 9) {
                 integers.add(num);
-            }
-            else {
+            } else {
                 Toast.makeText(this, "Invalid entry", Toast.LENGTH_LONG).show();
                 return;
             }
         }
 
+        // Convert ArrayList<Integer> to int[]
         int ints[] = new int[integers.size()];
 
         for(int i = 0; i < ints.length; i++) {
