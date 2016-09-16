@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     EditText editTextInput;
     TextView editTextOutput;
     TextView helpTextTop;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,17 +25,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void buttonOnClick(View view) {
-        String string = editTextInput.getText().toString();
+        String string = editTextInput.getText().toString().trim();
+
         if (string.length() < 1)
         {
             Toast.makeText(this, "Can't be empty", Toast.LENGTH_LONG).show();
             return;
         }
 
-        //need to add fix for " " at beginning of input
-
         String[] strings = string.split(" ");  //test
-
 
         int[] ints = new int[strings.length];
         for (int i = 0; i < strings.length; i++) {
