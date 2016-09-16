@@ -7,7 +7,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,12 +34,30 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        String[] strings = string.split(" ");  //test
+        // http://stackoverflow.com/a/15099212
+        String pattern = "((?<!\\S)\\d+(?!\\S))";
+        Pattern regex = Pattern.compile(pattern);
 
-        int[] ints = new int[strings.length];
+        Matcher m = regex.matcher(string);
 
-        for (int i = 0; i < strings.length; i++) {
-            ints[i] = Integer.parseInt(strings[i]);
+        ArrayList<Integer> integers = new ArrayList<Integer>();
+
+        while(m.find()) {
+            int num = Integer.parseInt(m.group());
+
+            if(num >= 0 && num <= 9) {
+                integers.add(num);
+            }
+            else {
+                Toast.makeText(this, "Invalid entry", Toast.LENGTH_LONG).show();
+                return;
+            }
+        }
+
+        int ints[] = new int[integers.size()];
+
+        for(int i = 0; i < ints.length; i++) {
+            ints[i] = integers.get(i);
         }
 
         String sortedInts = insertionSort(ints);
