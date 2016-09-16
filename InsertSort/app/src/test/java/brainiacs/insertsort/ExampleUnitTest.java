@@ -31,6 +31,7 @@ public class ExampleUnitTest {
                 "123",m.insertionSort(nums));
 
     }
+
     @Test
     public void insertionSortTest3() throws Exception {
         MainActivity m = new MainActivity();
@@ -52,18 +53,21 @@ public class ExampleUnitTest {
         int[] nums = {30,20,10};
         assertEquals("wrong entry",m.insertionSort(nums));
     }
+
     @Test
     public void sort1Num() throws Exception {
         MainActivity m = new MainActivity();
         int[] nums = {4};
         assertEquals("wrong entry",m.insertionSort(nums));
     }
+
     @Test
     public void exceedMaxSize() throws Exception {
         MainActivity m = new MainActivity();
         int[] nums = {4,3,5,2,5,3,5,7,3};
         assertEquals("wrong entry",m.insertionSort(nums));
     }
+
     @Test
     public void emptyList() throws Exception {
         MainActivity m = new MainActivity();

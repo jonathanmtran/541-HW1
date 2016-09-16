@@ -27,8 +27,7 @@ public class MainActivity extends AppCompatActivity {
     public void buttonOnClick(View view) {
         String string = editTextInput.getText().toString().trim();
 
-        if (string.length() < 1)
-        {
+        if (string.length() < 1) {
             Toast.makeText(this, "Can't be empty", Toast.LENGTH_LONG).show();
             return;
         }
@@ -36,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         String[] strings = string.split(" ");  //test
 
         int[] ints = new int[strings.length];
+
         for (int i = 0; i < strings.length; i++) {
             ints[i] = Integer.parseInt(strings[i]);
         }
@@ -50,8 +50,6 @@ public class MainActivity extends AppCompatActivity {
         } else {
             editTextOutput.setText(sortedInts);
         }
-
-
     }
 
     public void restartButtonOnClick(View view) {
@@ -60,15 +58,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void helpButtonOnClick(View view) {
-        if(helpTextTop.getVisibility() == View.VISIBLE)
-        {
+        if(helpTextTop.getVisibility() == View.VISIBLE) {
             helpTextTop.setVisibility(View.GONE);
-        } else
-        {
+        } else {
             helpTextTop.setVisibility(View.VISIBLE);
         }
     }
-
 
     public static String insertionSort(int[] list) {
         boolean checkNumbers = checkData(list);
@@ -79,12 +74,10 @@ public class MainActivity extends AppCompatActivity {
                 sortStr += m;
             }
             for (i = 1; i < list.length; i++) {
-
                 key = list[i];
                 j = i - 1;
 
                 while (j >= 0 && key < list[j]) {
-
                     temp = list[j];
                     list[j] = list[j + 1];
                     list[j + 1] = temp;
@@ -95,16 +88,13 @@ public class MainActivity extends AppCompatActivity {
                 for (int r : list) {
                     sortStr += r;
                 }
-
             }
 
             return sortStr;
-
         } else {
             System.out.println("wrong entry");
             return "wrong entry";
         }
-
     }
 
     private static boolean checkData(int[] list) {
