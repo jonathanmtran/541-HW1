@@ -43,6 +43,11 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<Integer> integers = new ArrayList<Integer>();
 
         while(m.find()) {
+            if(m.group().length() > 1) {
+                Toast.makeText(this, "Invalid entry", Toast.LENGTH_LONG).show();
+                return;
+            }
+
             int num = Integer.parseInt(m.group());
 
             // Determine if the number is a number from 0 to 9, inclusive
