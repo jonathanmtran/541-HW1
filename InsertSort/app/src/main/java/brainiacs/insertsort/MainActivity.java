@@ -1,6 +1,7 @@
 package brainiacs.insertsort;
 
 import android.content.DialogInterface;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -94,16 +95,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void quitButtonOnClick(View view) {
+        Resources res = getResources();
+
         new AlertDialog.Builder(this)
-            .setIcon(android.R.drawable.ic_dialog_alert)
-            .setMessage("Exit InsertSort?")
-            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            .setMessage(String.format(res.getString(R.string.exit_prompt), res.getString(R.string.app_name)))
+            .setPositiveButton(res.getString(R.string.yes), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     finish();
                 }
             })
-            .setNegativeButton("No", null)
+            .setNegativeButton(res.getString(R.string.no), null)
             .show();
     }
 
