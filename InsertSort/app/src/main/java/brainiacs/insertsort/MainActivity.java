@@ -1,6 +1,8 @@
 package brainiacs.insertsort;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
@@ -89,6 +91,20 @@ public class MainActivity extends AppCompatActivity {
         } else {
             helpTextTop.setVisibility(View.VISIBLE);
         }
+    }
+
+    public void quitButtonOnClick(View view) {
+        new AlertDialog.Builder(this)
+            .setIcon(android.R.drawable.ic_dialog_alert)
+            .setMessage("Exit InsertSort?")
+            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    finish();
+                }
+            })
+            .setNegativeButton("No", null)
+            .show();
     }
 
     public static String insertionSort(int[] list) {
