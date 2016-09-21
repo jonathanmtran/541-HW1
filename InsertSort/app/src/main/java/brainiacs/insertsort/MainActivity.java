@@ -30,14 +30,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void buttonOnClick(View view) {
+        //remove whitespace before and after input
         String string = editTextInput.getText().toString().trim();
 
         if (string.length() < 1) {
-            Toast.makeText(this, "Can't be empty", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Error: The text box is empty. Please add input.", Toast.LENGTH_LONG).show();
             return;
         }
 
         // http://stackoverflow.com/a/15099212
+        // match a digit only if there is not a non-whitespace character before it,
+        // and there is not a non-whitespace character after it
         String pattern = "((?<!\\S)\\d+(?!\\S))";
         Pattern regex = Pattern.compile(pattern);
 
@@ -46,8 +49,9 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<Integer> integers = new ArrayList<Integer>();
 
         while(m.find()) {
+            //if number is more than 1 digit. Catches leading zeroes.
             if(m.group().length() > 1) {
-                Toast.makeText(this, "Invalid entry", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Error: Please input numbers with one digit only.", Toast.LENGTH_LONG).show();
                 return;
             }
 
@@ -57,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             if(num >= 0 && num <= 9) {
                 integers.add(num);
             } else {
-                Toast.makeText(this, "Invalid entry", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Error: Please input numbers from 0-9 only.", Toast.LENGTH_LONG).show();
                 return;
             }
         }
@@ -74,8 +78,8 @@ public class MainActivity extends AppCompatActivity {
         //  for(int i:sortedInts){
         // sorted += i + " ";
         // }
-        if (sortedInts.equalsIgnoreCase("wrong entry")) {
-            Toast.makeText(this,"wrong entry",Toast.LENGTH_LONG).show();
+        if (sortedInts.startsWith("Error:")) {
+            Toast.makeText(this,sortedInts,Toast.LENGTH_LONG).show();
         } else {
             editTextOutput.setText(sortedInts);
         }
@@ -109,9 +113,13 @@ public class MainActivity extends AppCompatActivity {
             .show();
     }
 
+    //Please output string starting with "Error:" to mean there is an error
     public static String insertionSort(int[] list) {
         boolean checkNumbers = checkData(list);
-        if (list != null && list.length > 1 && list.length < 9 && checkNumbers == true) {
+        boolean notNull = list != null;
+        boolean largeEnough = list.length > 1;
+        boolean smallEnough = list.length < 9;
+        if (notNull && largeEnough && smallEnough && checkNumbers) {
             int i, j, key, temp;
             String sortStr = "";
             for (int m : list) {
@@ -135,9 +143,22 @@ public class MainActivity extends AppCompatActivity {
             }
 
             return sortStr;
-        } else {
-            System.out.println("wrong entry");
-            return "wrong entry";
+        } else if (!notNull) {
+            return "Error: The list is empty. The minimum size is 2.";
+        } else if (!largeEnough)
+        {
+            return "Error: The list is too small. The minimum size is 2.";
+        } else if(!smallEnough)
+        {
+            return "Error: The list is too large. The maximum size is 8.";
+        } else if(!checkNumbers)
+        {
+            return "Error: A numbers is out of range. Please input numbers 0-9 only.";
+        } else
+        {
+            // Should not print in sub-module
+            // System.out.println("wrong entry");
+            return "Error: Sort Failed.";
         }
     }
 
