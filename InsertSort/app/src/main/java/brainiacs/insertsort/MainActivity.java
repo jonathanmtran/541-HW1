@@ -91,11 +91,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void helpButtonOnClick(View view) {
-        if(helpTextTop.getVisibility() == View.VISIBLE) {
+/*        if(helpTextTop.getVisibility() == View.VISIBLE) {
             helpTextTop.setVisibility(View.GONE);
         } else {
             helpTextTop.setVisibility(View.VISIBLE);
         }
+        */
+        new AlertDialog.Builder(this)
+                .setMessage("Please input digits between 0-9 with a space between each number.\nMaximum input size is 8.\nMinimum input size is 2.")
+                .setPositiveButton("OK",null)
+                .setTitle("Help")
+                .show();
     }
 
     public void quitButtonOnClick(View view) {
