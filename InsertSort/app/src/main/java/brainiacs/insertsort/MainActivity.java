@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         editTextInput = (EditText) findViewById(R.id.editTextInput);
         editTextOutput = (TextView) findViewById(R.id.editTextOutput);
-        helpTextTop = (TextView) findViewById(R.id.helpTextTop);
     }
 
     public void buttonOnClick(View view) {
@@ -91,17 +90,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void helpButtonOnClick(View view) {
-/*        if(helpTextTop.getVisibility() == View.VISIBLE) {
-            helpTextTop.setVisibility(View.GONE);
-        } else {
-            helpTextTop.setVisibility(View.VISIBLE);
-        }
-        */
+        Resources res = getResources();
+
         new AlertDialog.Builder(this)
-                .setMessage("Please input digits between 0-9 with a space between each number.\nMaximum input size is 8.\nMinimum input size is 2.")
-                .setPositiveButton("OK",null)
-                .setTitle("Help")
-                .show();
+            .setMessage(res.getString(R.string.help_msg))
+            .setPositiveButton(res.getString(R.string.ok).toUpperCase(), null)
+            .setTitle(res.getString(R.string.help))
+            .show();
     }
 
     public void quitButtonOnClick(View view) {

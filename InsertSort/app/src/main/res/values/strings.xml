@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">InsertSort</string>
     <string name="exit_prompt">Exit %1$s?</string>
+    <string name="help_msg">Input digits between 0-9 with a space between each number.\n\nMaximum input size is 8.\nMinimum input size is 2.</string>
+    <string name="help">Help</string>
     <string name="no">No</string>
+    <string name="ok">Ok</string>
     <string name="yes">Yes</string>
 </resources>

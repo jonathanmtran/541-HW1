@@ -17,16 +17,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textMultiLine"
-            android:ems="10"
-            android:id="@+id/helpTextTop"
-            android:layout_gravity="center_horizontal"
-            android:visibility="gone"
-            android:text="Please input digits between 0-9 with a space between each number.\nMaximum input size is 8.\nMinimum input size is 2"/>
-
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
